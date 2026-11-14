@@ -80,6 +80,4 @@ Six members, two countries — Pakistan and India.
 - Abdullah — Team Member
 - Sujal Khanolkar — Team Member
 
-Built for the NASA Space Apps Challenge 2026. The team's main project,
-**Cipher-X Omega**, lives at
-https://github.com/sanaasif1217/cipher-x-crew-spherex
+Built for the NASA Space Apps Challenge 2026.
