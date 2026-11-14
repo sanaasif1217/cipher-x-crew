@@ -338,7 +338,7 @@ export default function App() {
             onClick={navigateToSection('top')}
           >
             <img
-              src="/assets/aistudio/nasa_worm_logo_transparent-removebg-preview_c546c34a.png"
+              src={`${import.meta.env.BASE_URL}assets/aistudio/nasa_worm_logo_transparent-removebg-preview_c546c34a.png`}
               alt="NASA"
               style={{ height: '58px', width: 'auto', display: 'block', objectFit: 'contain' }}
             />
