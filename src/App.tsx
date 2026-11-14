@@ -6,110 +6,42 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ValleyEngine } from './valley/ValleyEngine';
-import { createAudioStore, type AudioStoreApi } from './valley/audioEngine';
+import { CosmosEngine } from './cosmos/CosmosEngine';
+import { createAudioStore, type AudioStoreApi } from './cosmos/audioEngine';
+import {
+  isRealStarCard,
+  matchKnownStarByQuery,
+  pickRandomStar,
+  type ExploreCardEntry,
+  type RealStarId,
+} from './data/starExploreCatalog';
+import {
+  SectionOneWorkbench,
+  type CustomSkyPatch,
+} from './components/SectionOneWorkbench';
+import { SectorTwoExplorer } from './components/SectorTwoExplorer';
 import { RealDataExplorer } from './components/RealDataExplorer';
 
 gsap.registerPlugin(ScrollTrigger);
 
-type SectionId = 'top' | 'work' | 'about' | 'journal' | 'contact';
+type SectionId = 'top' | 'work' | 'sector-02' | 'real-data' | 'contact';
 
-const PROJECTS = [
-  {
-    title: 'Stellar Nursery Alpha',
-    meta: 'Emission Nebula · Carina Arm · 2,800 LY',
-    summary:
-      'Active star-forming region condensing primordial molecular hydrogen into luminous stellar clusters.',
-  },
-  {
-    title: 'Exoplanet Kepler-186f',
-    meta: 'Habitable Zone · Cygnus · 580 LY',
-    summary:
-      'Earth-sized rocky world orbiting an active red dwarf in the outer reaches of the Milky Way.',
-  },
-  {
-    title: 'Pulsar PSR B1937+21',
-    meta: 'Neutron Star · Vulpecula · 11,000 LY',
-    summary:
-      'Rapidly rotating magnetized neutron star emitting precise pulsed radio beacons across the galaxy.',
-  },
-];
-
-const JOURNAL_NOTES = [
-  {
-    title: 'Mapping Dark Energy Across Galactic Filaments',
-    meta: 'Observation Note 04 · 7 min read',
-    summary:
-      'How gravitational lensing reveals invisible matter bridges connecting distant galaxy clusters.',
-  },
-  {
-    title: 'Spectroscopic Signatures of Extraterrestrial Atmospheres',
-    meta: 'Observation Note 03 · 5 min read',
-    summary:
-      'Detecting water vapor and ozone absorption bands in transiting exoplanet light curves.',
-  },
-];
-
-interface StarCardItem {
-  name: string;
-  query: string;
-  description: string;
-  buttonLabel: string;
-}
-
-const STAR_CARDS: StarCardItem[] = [
-  {
-    name: "Barnard's Star",
-    query: "Barnard's Star",
-    description: "A nearby star that drifts across the sky",
-    buttonLabel: "Try this star",
-  },
-  {
-    name: "Epsilon Indi B",
-    query: "Epsilon Indi B",
-    description: "A pair of brown dwarfs orbiting a star",
-    buttonLabel: "Try this star",
-  },
-  {
-    name: "WISE 0855",
-    query: "WISE 0855 (RA 08h55m10.831s, Dec -7°14′42.53″)",
-    description: "A faint, fast-moving brown dwarf (RA 08h55m10.831s, Dec -7°14′42.53″)",
-    buttonLabel: "Try this star",
-  },
-  {
-    name: "RW Aurigae",
-    query: "RW Aurigae",
-    description: "A young variable star that flickers and changes brightness",
-    buttonLabel: "Try this star",
-  },
-  {
-    name: "R Draconis",
-    query: "R Draconis",
-    description: "A variable star that pulses in brightness",
-    buttonLabel: "Try this star",
-  },
-  {
-    name: "Surprise me",
-    query: "Surprise me",
-    description: "Not sure? We’ll pick one for you",
-    buttonLabel: "Surprise me",
-  },
-];
-
-/** Star card name -> real data pack slug in backend/static_data/ */
-const STAR_SLUG: Record<string, string> = {
-  "Barnard's Star": 'barnards-star',
-  'Epsilon Indi B': 'epsilon-indi',
-  'WISE 0855': 'wise-0855',
-  'RW Aurigae': 'rw-aurigae',
-  'R Draconis': 'r-draconis',
+/** Maps the workbench's star ids to Real Frames data-pack slugs. */
+const REAL_PACK_SLUGS: Partial<Record<RealStarId | 'custom', string>> = {
+  'barnards-star': 'barnards-star',
+  'epsilon-indi-b': 'epsilon-indi',
+  'wise-0855': 'wise-0855',
+  'rw-aurigae': 'rw-aurigae',
+  'r-draconis': 'r-draconis',
 };
 
+
+
 export default function App() {
-  const valleyRef = useRef<HTMLDivElement | null>(null);
+  const cosmosRef = useRef<HTMLDivElement | null>(null);
   const vignetteRef = useRef<HTMLDivElement | null>(null);
   const journeyRef = useRef<HTMLElement | null>(null);
-  const engineRef = useRef<ValleyEngine | null>(null);
+  const engineRef = useRef<CosmosEngine | null>(null);
   const audioStoreRef = useRef<(() => AudioStoreApi) | null>(null);
   const scrollAnimRef = useRef<gsap.core.Tween | null>(null);
 
@@ -118,54 +50,68 @@ export default function App() {
   const [soundPressed, setSoundPressed] = useState(false);
   const [activeNav, setActiveNav] = useState<SectionId>('top');
   const [skyQuery, setSkyQuery] = useState('');
-  const [realSlug, setRealSlug] = useState('3i-atlas');
-  const [starLoading, setStarLoading] = useState<string | null>(null);
-  const [starError, setStarError] = useState<string | null>(null);
+  const [selectedStarId, setSelectedStarId] = useState<RealStarId | 'custom'>('barnards-star');
+  const [customPatch, setCustomPatch] = useState<CustomSkyPatch | null>(null);
+  const [selectionNonce, setSelectionNonce] = useState(0);
+
+  const scrollToSection = (sectionId: SectionId, warpStrength = 0.42) => {
+    const targetEl = document.getElementById(sectionId);
+    if (!targetEl) return;
+
+    const targetY =
+      sectionId === 'top'
+        ? 0
+        : Math.max(0, targetEl.getBoundingClientRect().top + window.scrollY);
+    const distance = Math.abs(targetY - window.scrollY);
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reducedMotion || distance < 24) {
+      window.scrollTo({ top: targetY, behavior: 'auto' });
+      return;
+    }
+
+    engineRef.current?.triggerWarpJump(warpStrength);
+    scrollAnimRef.current?.kill();
+
+    const scrollProxy = { y: window.scrollY };
+    scrollAnimRef.current = gsap.to(scrollProxy, {
+      y: targetY,
+      duration: Math.min(1.35, Math.max(0.65, distance / 2400)),
+      ease: 'power2.inOut',
+      onUpdate: () => {
+        window.scrollTo(0, scrollProxy.y);
+      },
+      onComplete: () => {
+        scrollAnimRef.current = null;
+      },
+    });
+  };
 
   const handleSkySearch = (e: FormEvent) => {
     e.preventDefault();
-    engineRef.current?.triggerWarpJump(0.65);
-    const workEl = document.getElementById('sector-02');
-    if (workEl) {
-      workEl.scrollIntoView({ behavior: 'smooth' });
+    const matched = matchKnownStarByQuery(skyQuery);
+    if (matched) {
+      setSelectedStarId(matched);
+      setCustomPatch(null);
+      setSelectionNonce((n) => n + 1);
     }
+    scrollToSection('work', 0.65);
   };
 
-  const handleSelectStar = (card: StarCardItem) => {
-    let chosen = card;
-    if (card.name === 'Surprise me') {
-      const realStars = STAR_CARDS.filter((c) => c.name !== 'Surprise me');
-      chosen = realStars[Math.floor(Math.random() * realStars.length)];
-    }
+  const handleSelectStar = (card: ExploreCardEntry) => {
+    const target = isRealStarCard(card)
+      ? card
+      : pickRandomStar(selectedStarId === 'custom' ? undefined : selectedStarId);
 
-    setStarLoading(card.name);
-    setStarError(null);
-
-    // Fill search box
-    setSkyQuery(chosen.query);
-
-    // Point the real-data viewer at this star's data pack
-    const slug = STAR_SLUG[chosen.name];
-    if (slug) {
-      setRealSlug(slug);
-    }
-
-    // Smooth scroll to the real-data viewer
-    const viewerEl = document.getElementById('real-data');
-    if (viewerEl) {
-      viewerEl.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // Trigger warp jump & loading state
-    engineRef.current?.triggerWarpJump(0.85);
-
-    setTimeout(() => {
-      setStarLoading(null);
-    }, 900);
+    setSelectedStarId(target.id);
+    setCustomPatch(null);
+    setSelectionNonce((n) => n + 1);
+    setSkyQuery(target.query);
+    scrollToSection('work', 0.65);
   };
 
   useEffect(() => {
-    const container = valleyRef.current;
+    const container = cosmosRef.current;
     if (!container) return;
 
     const params = new URLSearchParams(window.location.search);
@@ -176,7 +122,7 @@ export default function App() {
     audioStore().initAudio();
 
     let introShown = false;
-    const valley = new ValleyEngine(
+    const cosmos = new CosmosEngine(
       container,
       () => setLoaded(true),
       () => {
@@ -195,12 +141,12 @@ export default function App() {
         },
       },
     );
-    engineRef.current = valley;
+    engineRef.current = cosmos;
 
     return () => {
       scrollAnimRef.current?.kill();
       scrollAnimRef.current = null;
-      valley.dispose();
+      cosmos.dispose();
       engineRef.current = null;
       audioStore().dispose();
       audioStoreRef.current = null;
@@ -225,9 +171,9 @@ export default function App() {
           engineRef.current?.setScrollProgress(p);
 
           if (p < 0.16) setActiveNav('top');
-          else if (p < 0.42) setActiveNav('work');
-          else if (p < 0.66) setActiveNav('about');
-          else if (p < 0.88) setActiveNav('journal');
+          else if (p < 0.4) setActiveNav('work');
+          else if (p < 0.62) setActiveNav('sector-02');
+          else if (p < 0.84) setActiveNav('real-data');
           else setActiveNav('contact');
         },
       });
@@ -289,48 +235,19 @@ export default function App() {
 
   const navigateToSection = (sectionId: SectionId) => (e: React.MouseEvent) => {
     e.preventDefault();
-    const targetEl = document.getElementById(sectionId);
-    if (!targetEl) return;
-
-    const targetY =
-      sectionId === 'top'
-        ? 0
-        : Math.max(0, targetEl.getBoundingClientRect().top + window.scrollY);
-    const distance = Math.abs(targetY - window.scrollY);
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    if (reducedMotion || distance < 24) {
-      window.scrollTo({ top: targetY, behavior: 'auto' });
-      return;
-    }
-
-    engineRef.current?.triggerWarpJump(0.42);
-    scrollAnimRef.current?.kill();
-
-    const scrollProxy = { y: window.scrollY };
-    scrollAnimRef.current = gsap.to(scrollProxy, {
-      y: targetY,
-      duration: Math.min(1.35, Math.max(0.65, distance / 2400)),
-      ease: 'power2.inOut',
-      onUpdate: () => {
-        window.scrollTo(0, scrollProxy.y);
-      },
-      onComplete: () => {
-        scrollAnimRef.current = null;
-      },
-    });
+    scrollToSection(sectionId, 0.42);
   };
 
   return (
     <>
-      <div id="valley" ref={valleyRef} data-testid="valley-canvas" aria-hidden="true">
+      <div id="cosmos-stage" ref={cosmosRef} data-testid="cosmos-canvas" aria-hidden="true">
         <div className="js-canvas-container" />
-        <div className="valley-vignette" ref={vignetteRef} />
+        <div className="cosmos-vignette" ref={vignetteRef} />
       </div>
 
-      {/* Fixed Studio Chrome above 3D Starfield */}
+      {/* Fixed Observatory Chrome above 3D Starfield */}
       <div className={`ui-chrome${introDone ? ' on' : ''}`} id="ui">
-        <header className="fh-header">
+        <header className="sky-header">
           <a
             className="logo"
             href="#top"
@@ -343,20 +260,34 @@ export default function App() {
               style={{ height: '58px', width: 'auto', display: 'block', objectFit: 'contain' }}
             />
           </a>
-          <nav className="fh-nav" aria-label="Main">
+          <nav className="sky-nav" aria-label="Main">
             <a
-              href="#sector-02"
+              href="#top"
+              className={activeNav === 'top' ? 'is-active' : undefined}
+              onClick={navigateToSection('top')}
+            >
+              Home
+            </a>
+            <a
+              href="#work"
               className={activeNav === 'work' ? 'is-active' : undefined}
               onClick={navigateToSection('work')}
+            >
+              Try Demo
+            </a>
+            <a
+              href="#sector-02"
+              className={activeNav === 'sector-02' ? 'is-active' : undefined}
+              onClick={navigateToSection('sector-02')}
             >
               Explore
             </a>
             <a
-              href="#about"
-              className={activeNav === 'about' ? 'is-active' : undefined}
-              onClick={navigateToSection('about')}
+              href="#real-data"
+              className={activeNav === 'real-data' ? 'is-active' : undefined}
+              onClick={navigateToSection('real-data')}
             >
-              About
+              Real Data
             </a>
             <a
               href="#contact"
@@ -372,7 +303,7 @@ export default function App() {
         </header>
 
         <div className="corner">
-          <span>Scroll to wander</span>
+          <span>Scroll to explore</span>
           <i />
           <button
             type="button"
@@ -420,7 +351,7 @@ export default function App() {
               className="go"
               href="#work"
               id="go"
-              aria-label="See our work"
+              aria-label="Open sky observatory"
               onClick={navigateToSection('work')}
               onPointerEnter={() => engineRef.current?.startHoverTransition()}
               onPointerLeave={() => engineRef.current?.stopHoverTransition()}
@@ -432,107 +363,63 @@ export default function App() {
           </div>
         </section>
 
-        {/* Destination 01: Nebula Landmark (Left in 3D space -> Panel aligned Right) */}
+        {/* Section 01: Interactive Sky Motion & Coordinate Observatory */}
         <section
           id="work"
-          className="destination destination--right"
+          className="destination destination--center destination--workbench"
           aria-labelledby="work-heading"
           data-destination="work"
         >
-          <div className="destination-panel" data-destination-panel>
-            <p className="dest-kicker">Sector 01 · Stellar Nursery Nebula</p>
-            <h2 id="work-heading" className="dest-title">
-              Celestial Observations
-            </h2>
-            <div className="dest-list">
-              {PROJECTS.map((item) => (
-                <article key={item.title} className="dest-item">
-                  <p className="dest-item-meta">{item.meta}</p>
-                  <h3 className="dest-item-title">{item.title}</h3>
-                  <p className="dest-item-summary">{item.summary}</p>
-                </article>
-              ))}
-            </div>
+          <div className="destination-panel s1-outer-panel" data-destination-panel>
+            <SectionOneWorkbench
+              selectedStarId={selectedStarId}
+              customPatch={customPatch}
+              selectionNonce={selectionNonce}
+              onSelectStar={(starId) => {
+                setSelectedStarId(starId);
+                setCustomPatch(null);
+                setSelectionNonce((n) => n + 1);
+              }}
+              onApplyCustomCoords={(patch, matchedId) => {
+                if (matchedId) {
+                  setSelectedStarId(matchedId);
+                  setCustomPatch(null);
+                } else {
+                  setSelectedStarId('custom');
+                  setCustomPatch(patch);
+                }
+                setSelectionNonce((n) => n + 1);
+              }}
+            />
           </div>
         </section>
 
-        {/* Destination 02: Explore the stars (Ringed Planet Landmark) */}
+        {/* Destination 02: Explore the stars (Interactive Sky Atlas & Observatory Gallery) */}
         <section
           id="sector-02"
-          className="destination destination--left destination--explore"
+          className="destination destination--center destination--explore"
           aria-labelledby="explore-heading"
           data-destination="about"
         >
-          <div className="destination-panel destination-panel--wide explore-panel" data-destination-panel>
-            <p className="dest-kicker">Sector 02 · Ringed Sanctuary</p>
-            <h2 id="explore-heading" className="dest-title">
-              Explore the stars
-            </h2>
-            <p className="explore-subtitle">
-              Not sure where to look? Pick a star below and watch how it moves or changes in SPHEREx images.
-            </p>
-
-            {starError && <div className="explore-error">{starError}</div>}
-
-            <div className="star-cards-grid">
-              {STAR_CARDS.map((card) => (
-                <article key={card.name} className="star-card">
-                  <div className="star-patch">
-                    <div className="star-patch-glow" />
-                    <div className="star-patch-dot" />
-                    <svg className="star-patch-grid" viewBox="0 0 100 100">
-                      <circle cx="50" cy="50" r="20" stroke="rgba(146, 180, 255, 0.2)" fill="none" strokeWidth="0.8" />
-                      <circle cx="50" cy="50" r="38" stroke="rgba(146, 180, 255, 0.12)" fill="none" strokeWidth="0.8" />
-                      <line x1="50" y1="0" x2="50" y2="100" stroke="rgba(146, 180, 255, 0.1)" strokeWidth="0.8" />
-                      <line x1="0" y1="50" x2="100" y2="50" stroke="rgba(146, 180, 255, 0.1)" strokeWidth="0.8" />
-                    </svg>
-                  </div>
-                  <h3 className="star-card-title">{card.name}</h3>
-                  <p className="star-card-desc">{card.description}</p>
-                  <button
-                    type="button"
-                    className="star-card-btn"
-                    disabled={starLoading === card.name}
-                    onClick={() => handleSelectStar(card)}
-                  >
-                    {starLoading === card.name ? 'Loading SPHEREx...' : card.buttonLabel}
-                  </button>
-                </article>
-              ))}
-            </div>
+          <div className="destination-panel explore-panel" data-destination-panel>
+            <SectorTwoExplorer
+              selectedStarId={selectedStarId}
+              onSelectStar={handleSelectStar}
+            />
           </div>
         </section>
 
-        {/* Real SPHEREx data packs — served by the project backend in this repo */}
+
+
+        {/* Destination 03: Real SPHEREx frames from the IRSA archive (backend data packs) */}
         <section
           id="real-data"
-          aria-label="Real SPHEREx data viewer"
-          style={{ position: 'relative', zIndex: 2 }}
+          className="destination destination--center"
+          aria-label="Real SPHEREx data"
+          data-destination="real-data"
         >
-          <RealDataExplorer requestedSlug={realSlug} />
-        </section>
-
-        {/* Destination 03: Spiral Galaxy Landmark (Left in 3D space -> Panel aligned Right) */}
-        <section
-          id="journal"
-          className="destination destination--right"
-          aria-labelledby="journal-heading"
-          data-destination="journal"
-        >
-          <div className="destination-panel" data-destination-panel>
-            <p className="dest-kicker">Sector 03 · Grand Spiral</p>
-            <h2 id="journal-heading" className="dest-title">
-              Observatory Field Notes
-            </h2>
-            <div className="dest-list">
-              {JOURNAL_NOTES.map((note) => (
-                <article key={note.title} className="dest-item">
-                  <p className="dest-item-meta">{note.meta}</p>
-                  <h3 className="dest-item-title">{note.title}</h3>
-                  <p className="dest-item-summary">{note.summary}</p>
-                </article>
-              ))}
-            </div>
+          <div data-destination-panel>
+            <RealDataExplorer requestedSlug={REAL_PACK_SLUGS[selectedStarId]} />
           </div>
         </section>
 

@@ -1,6 +1,6 @@
 {
-  "name": "Fernhollow",
-  "description": "A regenerative design studio. Wander through a night valley of flowers that grows as you move.",
+  "name": "Watch the Sky Change",
+  "description": "Interactive SPHEREx sky survey explorer — enter sky coordinates or explore 3D targets to watch stars, brown dwarfs, and variable systems change over time.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

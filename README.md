@@ -1,4 +1,4 @@
-# Watch the Sky — Cipher-X Crew
+# Watch the Sky Change — Cipher-X Crew
 
 **NASA Space Apps Challenge 2026 · "NASA SPHEREx and Planet X"**
 
@@ -10,10 +10,13 @@
 ![Data](https://img.shields.io/badge/Data-NASA%20IRSA%20SPHEREx-2E7D32)
 ![Status](https://img.shields.io/badge/status-hackathon%20project-555555)
 
-Watch the Sky makes it easy for anyone to see how a patch of sky changes
-over time in real SPHEREx survey images — no astronomy background needed.
-Pick one of the challenge's benchmark targets (or the interstellar comet
-3I/ATLAS) and play actual NASA archive frames back like a film.
+Watch the Sky Change makes it easy for anyone to see how a patch of sky
+changes over time. An interactive workbench visualizes how each
+benchmark target moves and varies, and the Real Frames section plays
+actual NASA SPHEREx archive frames back like a film — then lets you
+measure, difference and compare them. Pick one of the challenge's
+benchmark targets (or the interstellar comet 3I/ATLAS) and start
+exploring.
 
 <p align="center">
   <img src="backend/static_data/3i-atlas/frame_06.png" alt="A real SPHEREx frame of the 3I/ATLAS comet field, 14 December 2025" width="45%">
@@ -52,8 +55,8 @@ the project backend in this repository:
   raw GitHub URL), so the real frames play on any hosting — no server
   required. Running the backend is optional and only needed to generate
   packs for *new* coordinates.
-- The star cards in "Explore the stars" open the selected star's real
-  frames in the viewer.
+- Selecting a star anywhere on the page also loads its real frames in
+  the Real Frames section below.
 - The viewer doubles as a small workbench, all computed in the browser
   from the same real frames: the **Epoch Explorer** table (filterable by
   detector), **Brightness Analytics** (per-frame mean brightness,
@@ -61,9 +64,10 @@ the project backend in this repository:
   changes stay visible, fixed stars vanish), and **Compare** mode (any
   two targets side by side).
 
-The 3D starfield journey and the "Sky Time-Lapse & Coordinate Explorer"
-are presentation/simulation pieces; the Real Frames viewer is the part
-showing genuine archive data, and it is labelled as such on the page.
+The 3D cosmos journey, the motion workbench and the explorer gallery
+visualize each target's known motion and variability; the Real Frames
+viewer is the part showing genuine archive data, and it is labelled as
+such on the page.
 
 ## How the data packs are made (methodology)
 
