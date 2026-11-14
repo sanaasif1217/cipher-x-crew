@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/readme-banner.svg" alt="Watch the Sky Change — a ringed planet and a moon orbit a star over a starfield. Cipher-X Crew, NASA Space Apps 2026, data from NASA / IRSA SPHEREx." width="100%">
+</p>
+
 # Watch the Sky Change — Cipher-X Crew
 
 **NASA Space Apps Challenge 2026 · "NASA SPHEREx and Planet X"**
