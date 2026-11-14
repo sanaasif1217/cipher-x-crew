@@ -2,6 +2,8 @@
 
 **NASA Space Apps Challenge 2026 · "NASA SPHEREx and Planet X"**
 
+**Project repository:** https://github.com/sanaasif1217/cipher-x-crew
+
 Watch the Sky makes it easy for anyone to see how a patch of sky changes
 over time in real SPHEREx survey images — no astronomy background needed.
 Pick one of the challenge's benchmark targets (or the interstellar comet
