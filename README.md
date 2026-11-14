@@ -31,6 +31,10 @@ Pick one of the challenge's benchmark targets (or the interstellar comet
 | A moving-object example | Comet 3I/ATLAS pack — 12 frames from a single morning as it crossed the detector array | Done |
 | Enter coordinates and view that patch | Backend API: `GET /api/patch?ra=…&dec=…` generates a frame pack for any coordinates | Done in the backend; generating new packs inside the hosted page is future work |
 | Inspectable, honest data | Every frame carries its observation time, detector and wavelength band from the archive manifest | Done |
+| Explore the underlying observations | Epoch Explorer — a filterable table of every frame's UTC, detector, band and observation ID | Done |
+| Measure change, not just show it | Brightness Analytics — each frame's mean brightness measured in the browser and charted over time | Done |
+| Difference imaging to highlight movers | Δ Difference view — any frame minus frame 1, amplified ×3, computed in the browser | Done |
+| Compare targets side by side | Compare mode — two targets with frames, brightness curves and archive depth | Done |
 
 ## What's real here
 
@@ -50,6 +54,12 @@ the project backend in this repository:
   packs for *new* coordinates.
 - The star cards in "Explore the stars" open the selected star's real
   frames in the viewer.
+- The viewer doubles as a small workbench, all computed in the browser
+  from the same real frames: the **Epoch Explorer** table (filterable by
+  detector), **Brightness Analytics** (per-frame mean brightness,
+  charted), the **Δ Difference** view (frame minus frame 1 — movers and
+  changes stay visible, fixed stars vanish), and **Compare** mode (any
+  two targets side by side).
 
 The 3D starfield journey and the "Sky Time-Lapse & Coordinate Explorer"
 are presentation/simulation pieces; the Real Frames viewer is the part
@@ -150,8 +160,8 @@ GitHub Actions) after adding it under `.github/workflows/`.
 
 - Generate packs for arbitrary coordinates directly in the web page
   (hosted backend service).
-- Difference-imaging view in the Real Frames player (frame-to-frame
-  subtraction to highlight movers).
+- Let visitors load a pack generated elsewhere and explore it with the
+  same workbench.
 - Longer frame series per target and a field-of-view choice.
 - A searchable index over all packs ("fingerprint memory").
 
