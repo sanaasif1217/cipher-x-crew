@@ -330,7 +330,7 @@ export default function App() {
       >
         <section id="top" className="hero-stage">
           <div className="hero-card">
-            <div className="hero-badge">✦ SPHEREx Mission Simulator</div>
+            <div className="hero-badge">✦ SPHEREx Mission Observatory</div>
             <h1>Watch the sky change</h1>
             <p className="cap">
               Making it easy for anyone to quickly see how they change over time.

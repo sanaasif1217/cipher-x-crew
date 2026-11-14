@@ -160,8 +160,9 @@ be hosted on Vercel or Netlify.
 - New coordinates can be turned into packs by the backend, but not yet
   from inside the hosted web page; that needs the backend running as a
   public service.
-- The explorer and 3D journey sections are simulations for presentation;
-  only the Real Frames viewer shows archive data, and it says so.
+- The explorer and 3D journey sections are presentation visualizations
+  of each target's known behaviour; the Real Frames viewer is the part
+  that shows genuine archive data, and it says so.
 - Frames are single-band level-2 images rendered with a shared stretch;
   they are for watching change, not for photometric measurement.
 
