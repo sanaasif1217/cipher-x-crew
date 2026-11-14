@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { ResearchAssistant } from './ResearchAssistant';
 
 /**
  * RealDataExplorer — plays and analyses REAL SPHEREx frames produced by
@@ -811,6 +812,7 @@ export function RealDataExplorer({ requestedSlug }: RealDataExplorerProps) {
           />
         )}
         <ComparePanel slugA={target.slug} />
+        <ResearchAssistant />
       </div>
     </div>
   );

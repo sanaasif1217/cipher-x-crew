@@ -44,6 +44,7 @@ exploring.
 | Measure change, not just show it | Brightness Analytics — each frame's mean brightness measured in the browser and charted over time | Done |
 | Difference imaging to highlight movers | Δ Difference view — any frame minus frame 1, amplified ×3, computed in the browser | Done |
 | Compare targets side by side | Compare mode — two targets with frames, brightness curves and archive depth | Done |
+| Ask questions of the project documents | Research Assistant — TF-IDF retrieval over the README, methodology and manifests; every answer cites its source, and it declines honestly when the documents don't cover a question | Done |
 
 ## What's real here
 
