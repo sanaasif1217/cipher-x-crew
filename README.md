@@ -4,6 +4,8 @@
 
 **Project repository:** https://github.com/sanaasif1217/cipher-x-crew
 
+**Live demo:** https://sanaasif1217.github.io/cipher-x-crew/
+
 ![NASA Space Apps 2026](https://img.shields.io/badge/NASA%20Space%20Apps-2026-E8933A)
 ![React 19](https://img.shields.io/badge/React-19-61DAFB)
 ![Python](https://img.shields.io/badge/Python-FastAPI-3776AB)
@@ -140,12 +142,15 @@ The website build is verified with `npm run build` and `npm run lint`
 
 ## Deployment
 
-The site is a static build (`npm run build` → `dist/`) and can be hosted
-on GitHub Pages, Vercel or Netlify. The Real Frames viewer fetches its
-data packs from this repository, so no backend hosting is required for
-the deployed site. A ready-made GitHub Actions workflow for Pages is
-kept with the project documentation; enable Pages (Settings → Pages →
-GitHub Actions) after adding it under `.github/workflows/`.
+The site is **live on GitHub Pages**:
+https://sanaasif1217.github.io/cipher-x-crew/
+
+It is a static build (`npm run build` → `dist/`); the production build
+is published from the `docs/` folder of this repository (Settings →
+Pages → Deploy from a branch → `main` → `/docs`). The Real Frames
+viewer fetches its data packs from this repository, so no backend
+hosting is required for the deployed site. The same build can equally
+be hosted on Vercel or Netlify.
 
 ## Limitations
 
