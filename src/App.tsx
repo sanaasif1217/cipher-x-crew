@@ -8,6 +8,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ValleyEngine } from './valley/ValleyEngine';
 import { createAudioStore, type AudioStoreApi } from './valley/audioEngine';
+import { RealDataExplorer } from './components/RealDataExplorer';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -95,6 +96,15 @@ const STAR_CARDS: StarCardItem[] = [
   },
 ];
 
+/** Star card name -> real data pack slug in backend/static_data/ */
+const STAR_SLUG: Record<string, string> = {
+  "Barnard's Star": 'barnards-star',
+  'Epsilon Indi B': 'epsilon-indi',
+  'WISE 0855': 'wise-0855',
+  'RW Aurigae': 'rw-aurigae',
+  'R Draconis': 'r-draconis',
+};
+
 export default function App() {
   const valleyRef = useRef<HTMLDivElement | null>(null);
   const vignetteRef = useRef<HTMLDivElement | null>(null);
@@ -108,6 +118,7 @@ export default function App() {
   const [soundPressed, setSoundPressed] = useState(false);
   const [activeNav, setActiveNav] = useState<SectionId>('top');
   const [skyQuery, setSkyQuery] = useState('');
+  const [realSlug, setRealSlug] = useState('3i-atlas');
   const [starLoading, setStarLoading] = useState<string | null>(null);
   const [starError, setStarError] = useState<string | null>(null);
 
@@ -121,26 +132,31 @@ export default function App() {
   };
 
   const handleSelectStar = (card: StarCardItem) => {
-    let targetQuery = card.query;
+    let chosen = card;
     if (card.name === 'Surprise me') {
       const realStars = STAR_CARDS.filter((c) => c.name !== 'Surprise me');
-      const randomChoice = realStars[Math.floor(Math.random() * realStars.length)];
-      targetQuery = randomChoice.query;
+      chosen = realStars[Math.floor(Math.random() * realStars.length)];
     }
 
     setStarLoading(card.name);
     setStarError(null);
 
     // Fill search box
-    setSkyQuery(targetQuery);
+    setSkyQuery(chosen.query);
 
-    // Smooth scroll up to top viewer
-    const topEl = document.getElementById('top');
-    if (topEl) {
-      topEl.scrollIntoView({ behavior: 'smooth' });
+    // Point the real-data viewer at this star's data pack
+    const slug = STAR_SLUG[chosen.name];
+    if (slug) {
+      setRealSlug(slug);
     }
 
-    // Trigger warp jump & simulation loading
+    // Smooth scroll to the real-data viewer
+    const viewerEl = document.getElementById('real-data');
+    if (viewerEl) {
+      viewerEl.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Trigger warp jump & loading state
     engineRef.current?.triggerWarpJump(0.85);
 
     setTimeout(() => {
@@ -485,6 +501,15 @@ export default function App() {
               ))}
             </div>
           </div>
+        </section>
+
+        {/* Real SPHEREx data packs — served by the project backend in this repo */}
+        <section
+          id="real-data"
+          aria-label="Real SPHEREx data viewer"
+          style={{ position: 'relative', zIndex: 2 }}
+        >
+          <RealDataExplorer requestedSlug={realSlug} />
         </section>
 
         {/* Destination 03: Spiral Galaxy Landmark (Left in 3D space -> Panel aligned Right) */}
