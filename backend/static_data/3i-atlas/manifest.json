@@ -1,0 +1,159 @@
+{
+ "ra_deg": 167.1309,
+ "dec_deg": 5.1732,
+ "field_size_deg": 0.5,
+ "display_px": 900,
+ "n_epochs_total": 184,
+ "n_frames": 12,
+ "frames": [
+  {
+   "index": 1,
+   "utc": "2025-12-14T04:26:46.205",
+   "obs_id": "2025W50_2A_0685_1",
+   "collection": "spherex_dr1",
+   "detector": "D5",
+   "band_um": [
+    3.811,
+    4.43
+   ],
+   "file": "frame_01.png"
+  },
+  {
+   "index": 2,
+   "utc": "2025-12-14T04:28:55.114",
+   "obs_id": "2025W50_2A_0685_2",
+   "collection": "spherex_dr1",
+   "detector": "D5",
+   "band_um": [
+    3.811,
+    4.43
+   ],
+   "file": "frame_02.png"
+  },
+  {
+   "index": 3,
+   "utc": "2025-12-14T04:33:13.018",
+   "obs_id": "2025W50_2A_0685_4",
+   "collection": "spherex_dr1",
+   "detector": "D5",
+   "band_um": [
+    3.811,
+    4.43
+   ],
+   "file": "frame_03.png"
+  },
+  {
+   "index": 4,
+   "utc": "2025-12-14T06:05:29.357",
+   "obs_id": "2025W50_2A_0698_3",
+   "collection": "spherex_dr1",
+   "detector": "D5",
+   "band_um": [
+    3.811,
+    4.43
+   ],
+   "file": "frame_04.png"
+  },
+  {
+   "index": 5,
+   "utc": "2025-12-14T07:39:57.715",
+   "obs_id": "2025W50_2A_0712_1",
+   "collection": "spherex_dr1",
+   "detector": "D5",
+   "band_um": [
+    3.811,
+    4.43
+   ],
+   "file": "frame_05.png"
+  },
+  {
+   "index": 6,
+   "utc": "2025-12-14T07:46:24.528",
+   "obs_id": "2025W50_2A_0712_4",
+   "collection": "spherex_dr1",
+   "detector": "D5",
+   "band_um": [
+    3.811,
+    4.43
+   ],
+   "file": "frame_06.png"
+  },
+  {
+   "index": 7,
+   "utc": "2025-12-14T11:00:48.096",
+   "obs_id": "2025W50_2A_0741_2",
+   "collection": "spherex_dr1",
+   "detector": "D3",
+   "band_um": [
+    1.63,
+    2.435
+   ],
+   "file": "frame_07.png"
+  },
+  {
+   "index": 8,
+   "utc": "2025-12-14T12:36:36.288",
+   "obs_id": "2025W50_2A_0755_1",
+   "collection": "spherex_dr1",
+   "detector": "D6",
+   "band_um": [
+    4.412,
+    5.01
+   ],
+   "file": "frame_08.png"
+  },
+  {
+   "index": 9,
+   "utc": "2025-12-14T12:40:54.192",
+   "obs_id": "2025W50_2A_0755_3",
+   "collection": "spherex_dr1",
+   "detector": "D3",
+   "band_um": [
+    1.63,
+    2.435
+   ],
+   "file": "frame_09.png"
+  },
+  {
+   "index": 10,
+   "utc": "2025-12-14T17:28:15.571",
+   "obs_id": "2025W50_2A_0797_2",
+   "collection": "spherex_dr1",
+   "detector": "D3",
+   "band_um": [
+    1.63,
+    2.435
+   ],
+   "file": "frame_10.png"
+  },
+  {
+   "index": 11,
+   "utc": "2025-12-14T17:32:33.475",
+   "obs_id": "2025W50_2A_0797_4",
+   "collection": "spherex_dr1",
+   "detector": "D3",
+   "band_um": [
+    1.63,
+    2.435
+   ],
+   "file": "frame_11.png"
+  },
+  {
+   "index": 12,
+   "utc": "2025-12-14T19:09:41.414",
+   "obs_id": "2025W50_2A_0813_3",
+   "collection": "spherex_dr1",
+   "detector": "D6",
+   "band_um": [
+    4.412,
+    5.01
+   ],
+   "file": "frame_12.png"
+  }
+ ],
+ "source": "NASA/IPAC Infrared Science Archive (IRSA) - SPHEREx level-2 images via IBE cutouts; frames reprojected onto a common grid, median-background subtracted, asinh-stretched with one global scale per series.",
+ "credit": "SPHEREx / NASA / IRSA",
+ "target": "3I/ATLAS",
+ "slug": "3i-atlas",
+ "note": "Interstellar comet field - the Cipher-X Omega worked example. Frames are restricted to 2025-12-14, the morning the comet crossed this field (184 epochs cover the point across the full survey)."
+}

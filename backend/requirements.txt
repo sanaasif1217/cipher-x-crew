@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+numpy
+astropy
+pyvo
+reproject
+Pillow
+requests
