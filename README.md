@@ -45,6 +45,7 @@ exploring.
 | Difference imaging to highlight movers | Δ Difference view — any frame minus frame 1, amplified ×3, computed in the browser | Done |
 | Compare targets side by side | Compare mode — two targets with frames, brightness curves and archive depth | Done |
 | Ask questions of the project documents | Research Assistant — TF-IDF retrieval over the README, methodology and manifests; every answer cites its source, and it declines honestly when the documents don't cover a question | Done |
+| A measured scientific result | Comet 3I/ATLAS motion fitted from the pack's own frames: **1.154°/day at PA 289.1°** (9 frames, 8.2 h), vs the JPL-validated 1.167°/day — agreement within ~1% (see "Measured result") | Done |
 
 ## What's real here
 
@@ -95,6 +96,22 @@ such on the page.
 
 Nothing in a pack is simulated or hand-drawn: if a value appears in the
 viewer, it came from the archive or the manifest.
+
+## Measured result: the motion of 3I/ATLAS
+
+The comet pack is not just pictures — its motion was measured from the
+pack's own frames (`backend/measure_comet_motion.py`, results in
+`backend/static_data/3i-atlas/motion_result.json`). The comet's light
+was centroided in 9 of the 12 frames (in the last three it has left the
+0.5° field), around the positions predicted by the project's validated
+ephemeris, and a linear fit to those centroids gives:
+
+- **Rate: 173 arcsec/hour = 1.154° per day**
+- **Position angle: 289.1°** (west-northwest)
+- Displacement across the 8.2-hour fit baseline: **1,426 arcsec**
+- Independent check: a fit to the underlying SPHEREx epochs, validated
+  against the JPL Horizons ephemeris to ≤0.33″, gives **1.167°/day at
+  289.3°** — the pack measurement agrees within about **1%**.
 
 ## Targets with real data packs
 

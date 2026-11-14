@@ -803,6 +803,26 @@ export function RealDataExplorer({ requestedSlug }: RealDataExplorerProps) {
           </div>
         </div>
 
+        {/* Measured result: comet motion fitted from this pack's frames */}
+        {target.slug === '3i-atlas' && (
+          <div className="mt-8 bg-[#0a0d16] rounded-2xl border border-emerald-400/25 p-5">
+            <h3 className="text-sm font-mono uppercase tracking-wider text-emerald-300">
+              Measured Result — Motion of 3I/ATLAS
+            </h3>
+            <p className="text-sm text-[#f5efe2]/80 leading-relaxed mt-2 max-w-3xl">
+              The comet's motion was fitted from <strong>these very frames</strong>: centroiding its
+              light in 9 of the pack's 12 frames (the last three fall outside the field) gives a rate
+              of <strong>173 arcsec/hour — 1.154° per day — at position angle 289.1°</strong>, a
+              displacement of 1,426 arcsec across 8.2 hours. An independent fit to the underlying
+              SPHEREx epochs, validated against the JPL Horizons ephemeris, gives 1.167°/day at
+              289.3° — agreement within about 1%. Reproduce it with{' '}
+              <span className="font-mono text-[13px]">backend/measure_comet_motion.py</span>; the
+              full measurement is in{' '}
+              <span className="font-mono text-[13px]">motion_result.json</span> beside the pack.
+            </p>
+          </div>
+        )}
+
         {/* Depth: epoch explorer + compare */}
         {manifest && (
           <EpochExplorer
