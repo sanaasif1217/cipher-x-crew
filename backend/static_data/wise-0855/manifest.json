@@ -1,0 +1,159 @@
+{
+ "ra_deg": 133.79513,
+ "dec_deg": -7.24515,
+ "field_size_deg": 0.5,
+ "display_px": 900,
+ "n_epochs_total": 129,
+ "n_frames": 12,
+ "frames": [
+  {
+   "index": 1,
+   "utc": "2025-05-05T16:48:02.419",
+   "obs_id": "2025W19_1B_0116_1",
+   "collection": "spherex_dr1",
+   "detector": "D3",
+   "band_um": [
+    1.63,
+    2.435
+   ],
+   "file": "frame_01.png"
+  },
+  {
+   "index": 2,
+   "utc": "2025-05-05T16:50:11.414",
+   "obs_id": "2025W19_1B_0116_2",
+   "collection": "spherex_dr1",
+   "detector": "D3",
+   "band_um": [
+    1.63,
+    2.435
+   ],
+   "file": "frame_02.png"
+  },
+  {
+   "index": 3,
+   "utc": "2025-05-05T20:01:35.443",
+   "obs_id": "2025W19_1B_0138_1",
+   "collection": "spherex_dr1",
+   "detector": "D3",
+   "band_um": [
+    1.63,
+    2.435
+   ],
+   "file": "frame_03.png"
+  },
+  {
+   "index": 4,
+   "utc": "2025-05-06T02:33:29.894",
+   "obs_id": "2025W19_1B_0181_1",
+   "collection": "spherex_dr1",
+   "detector": "D2",
+   "band_um": [
+    1.103,
+    1.65
+   ],
+   "file": "frame_04.png"
+  },
+  {
+   "index": 5,
+   "utc": "2025-05-06T02:35:38.890",
+   "obs_id": "2025W19_1B_0181_2",
+   "collection": "spherex_dr1",
+   "detector": "D2",
+   "band_um": [
+    1.103,
+    1.65
+   ],
+   "file": "frame_05.png"
+  },
+  {
+   "index": 6,
+   "utc": "2025-05-06T02:37:47.798",
+   "obs_id": "2025W19_1B_0181_3",
+   "collection": "spherex_dr1",
+   "detector": "D2",
+   "band_um": [
+    1.103,
+    1.65
+   ],
+   "file": "frame_06.png"
+  },
+  {
+   "index": 7,
+   "utc": "2025-05-06T02:39:56.707",
+   "obs_id": "2025W19_1B_0181_4",
+   "collection": "spherex_dr1",
+   "detector": "D2",
+   "band_um": [
+    1.103,
+    1.65
+   ],
+   "file": "frame_07.png"
+  },
+  {
+   "index": 8,
+   "utc": "2025-05-06T10:43:52.205",
+   "obs_id": "2025W19_1B_0231_2",
+   "collection": "spherex_dr1",
+   "detector": "D5",
+   "band_um": [
+    3.811,
+    4.43
+   ],
+   "file": "frame_08.png"
+  },
+  {
+   "index": 9,
+   "utc": "2025-05-06T10:46:01.114",
+   "obs_id": "2025W19_1B_0231_3",
+   "collection": "spherex_dr1",
+   "detector": "D5",
+   "band_um": [
+    3.811,
+    4.43
+   ],
+   "file": "frame_09.png"
+  },
+  {
+   "index": 10,
+   "utc": "2025-10-31T17:20:39.293",
+   "obs_id": "2025W44_2B_0305_1",
+   "collection": "spherex_dr1",
+   "detector": "D1",
+   "band_um": [
+    0.746,
+    1.117
+   ],
+   "file": "frame_10.png"
+  },
+  {
+   "index": 11,
+   "utc": "2025-12-11T19:17:18.730",
+   "obs_id": "2025W50_2A_0086_1",
+   "collection": "spherex_dr1",
+   "detector": "D2",
+   "band_um": [
+    1.103,
+    1.65
+   ],
+   "file": "frame_11.png"
+  },
+  {
+   "index": 12,
+   "utc": "2026-04-21T04:45:01.411",
+   "obs_id": "2026W17_1B_0227_2",
+   "collection": "spherex_dr1",
+   "detector": "D3",
+   "band_um": [
+    1.63,
+    2.435
+   ],
+   "file": "frame_12.png"
+  }
+ ],
+ "source": "NASA/IPAC Infrared Science Archive (IRSA) - SPHEREx level-2 images via IBE cutouts; frames reprojected onto a common grid, median-background subtracted, asinh-stretched with one global scale per series.",
+ "credit": "SPHEREx / NASA / IRSA",
+ "target": "WISE 0855",
+ "slug": "wise-0855",
+ "note": "Fast-moving brown dwarf; verified 129 epochs, 2025-05-05 to 2026-05-14."
+}

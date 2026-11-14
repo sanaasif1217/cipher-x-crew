@@ -1,0 +1,159 @@
+{
+ "ra_deg": 330.84024,
+ "dec_deg": -56.78598,
+ "field_size_deg": 0.5,
+ "display_px": 900,
+ "n_epochs_total": 238,
+ "n_frames": 12,
+ "frames": [
+  {
+   "index": 1,
+   "utc": "2025-04-24T20:31:57.101",
+   "obs_id": "2025W17_4B_0017_1",
+   "collection": "spherex_dr1",
+   "detector": "D2",
+   "band_um": [
+    1.103,
+    1.65
+   ],
+   "file": "frame_01.png"
+  },
+  {
+   "index": 2,
+   "utc": "2025-04-24T20:34:06.010",
+   "obs_id": "2025W17_4B_0017_2",
+   "collection": "spherex_dr1",
+   "detector": "D2",
+   "band_um": [
+    1.103,
+    1.65
+   ],
+   "file": "frame_02.png"
+  },
+  {
+   "index": 3,
+   "utc": "2025-04-26T01:49:30.115",
+   "obs_id": "2025W17_4B_0202_2",
+   "collection": "spherex_dr1",
+   "detector": "D2",
+   "band_um": [
+    1.103,
+    1.65
+   ],
+   "file": "frame_03.png"
+  },
+  {
+   "index": 4,
+   "utc": "2025-04-26T19:45:44.438",
+   "obs_id": "2025W17_4B_0315_2",
+   "collection": "spherex_dr1",
+   "detector": "D2",
+   "band_um": [
+    1.103,
+    1.65
+   ],
+   "file": "frame_04.png"
+  },
+  {
+   "index": 5,
+   "utc": "2025-04-27T20:11:18.211",
+   "obs_id": "2025W17_4B_0468_1",
+   "collection": "spherex_dr1",
+   "detector": "D1",
+   "band_um": [
+    0.746,
+    1.117
+   ],
+   "file": "frame_05.png"
+  },
+  {
+   "index": 6,
+   "utc": "2025-04-29T03:09:29.462",
+   "obs_id": "2025W18_1B_0091_1",
+   "collection": "spherex_dr1",
+   "detector": "D6",
+   "band_um": [
+    4.412,
+    5.01
+   ],
+   "file": "frame_06.png"
+  },
+  {
+   "index": 7,
+   "utc": "2025-04-30T01:59:04.330",
+   "obs_id": "2025W18_1B_0238_1",
+   "collection": "spherex_dr1",
+   "detector": "D3",
+   "band_um": [
+    1.63,
+    2.435
+   ],
+   "file": "frame_07.png"
+  },
+  {
+   "index": 8,
+   "utc": "2025-04-30T21:40:19.373",
+   "obs_id": "2025W18_1B_0363_2",
+   "collection": "spherex_dr1",
+   "detector": "D6",
+   "band_um": [
+    4.412,
+    5.01
+   ],
+   "file": "frame_08.png"
+  },
+  {
+   "index": 9,
+   "utc": "2025-05-04T16:51:53.798",
+   "obs_id": "2025W18_2B_0489_1",
+   "collection": "spherex_dr1",
+   "detector": "D2",
+   "band_um": [
+    1.103,
+    1.65
+   ],
+   "file": "frame_09.png"
+  },
+  {
+   "index": 10,
+   "utc": "2025-09-28T23:06:10.282",
+   "obs_id": "2025W39_2A_0693_2",
+   "collection": "spherex_dr1",
+   "detector": "D6",
+   "band_um": [
+    4.412,
+    5.01
+   ],
+   "file": "frame_10.png"
+  },
+  {
+   "index": 11,
+   "utc": "2026-04-18T20:16:29.856",
+   "obs_id": "2026W16_2A_0434_1",
+   "collection": "spherex_dr1",
+   "detector": "D1",
+   "band_um": [
+    0.746,
+    1.117
+   ],
+   "file": "frame_11.png"
+  },
+  {
+   "index": 12,
+   "utc": "2026-09-22T05:26:44.678",
+   "obs_id": "2026W39_1A_0276_1",
+   "collection": "spherex_qr3",
+   "detector": "D3",
+   "band_um": [
+    1.63,
+    2.435
+   ],
+   "file": "frame_12.png"
+  }
+ ],
+ "source": "NASA/IPAC Infrared Science Archive (IRSA) - SPHEREx level-2 images via IBE cutouts; frames reprojected onto a common grid, median-background subtracted, asinh-stretched with one global scale per series.",
+ "credit": "SPHEREx / NASA / IRSA",
+ "target": "Epsilon Indi B",
+ "slug": "epsilon-indi",
+ "note": "Brown-dwarf pair ~7 arcmin from the Epsilon Indi A centre used here, inside the same 0.5-degree field; verified 238 epochs, 2025-04-24 to 2026-10-02."
+}

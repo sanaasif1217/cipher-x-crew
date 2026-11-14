@@ -1,0 +1,159 @@
+{
+ "ra_deg": 76.95653,
+ "dec_deg": 30.40144,
+ "field_size_deg": 0.5,
+ "display_px": 900,
+ "n_epochs_total": 168,
+ "n_frames": 12,
+ "frames": [
+  {
+   "index": 1,
+   "utc": "2025-09-01T10:04:17.501",
+   "obs_id": "2025W36_1A_0095_1",
+   "collection": "spherex_dr1",
+   "detector": "D1",
+   "band_um": [
+    0.746,
+    1.117
+   ],
+   "file": "frame_01.png"
+  },
+  {
+   "index": 2,
+   "utc": "2025-09-01T10:06:26.410",
+   "obs_id": "2025W36_1A_0095_2",
+   "collection": "spherex_dr1",
+   "detector": "D1",
+   "band_um": [
+    0.746,
+    1.117
+   ],
+   "file": "frame_02.png"
+  },
+  {
+   "index": 3,
+   "utc": "2025-09-02T23:27:24.336",
+   "obs_id": "2025W36_1A_0446_1",
+   "collection": "spherex_dr1",
+   "detector": "D1",
+   "band_um": [
+    0.746,
+    1.117
+   ],
+   "file": "frame_03.png"
+  },
+  {
+   "index": 4,
+   "utc": "2025-09-03T17:24:32.400",
+   "obs_id": "2025W36_1A_0606_2",
+   "collection": "spherex_dr1",
+   "detector": "D1",
+   "band_um": [
+    0.746,
+    1.117
+   ],
+   "file": "frame_04.png"
+  },
+  {
+   "index": 5,
+   "utc": "2025-09-03T23:57:49.795",
+   "obs_id": "2025W36_1A_0663_3",
+   "collection": "spherex_dr1",
+   "detector": "D1",
+   "band_um": [
+    0.746,
+    1.117
+   ],
+   "file": "frame_05.png"
+  },
+  {
+   "index": 6,
+   "utc": "2025-09-08T06:38:20.659",
+   "obs_id": "2025W37_1A_0068_2",
+   "collection": "spherex_dr1",
+   "detector": "D2",
+   "band_um": [
+    1.103,
+    1.65
+   ],
+   "file": "frame_06.png"
+  },
+  {
+   "index": 7,
+   "utc": "2025-09-08T13:15:54.403",
+   "obs_id": "2025W37_1A_0124_3",
+   "collection": "spherex_dr1",
+   "detector": "D2",
+   "band_um": [
+    1.103,
+    1.65
+   ],
+   "file": "frame_07.png"
+  },
+  {
+   "index": 8,
+   "utc": "2025-09-09T21:45:48.384",
+   "obs_id": "2025W37_1A_0379_1",
+   "collection": "spherex_dr1",
+   "detector": "D2",
+   "band_um": [
+    1.103,
+    1.65
+   ],
+   "file": "frame_08.png"
+  },
+  {
+   "index": 9,
+   "utc": "2025-09-10T12:28:43.594",
+   "obs_id": "2025W37_1A_0496_2",
+   "collection": "spherex_dr1",
+   "detector": "D5",
+   "band_um": [
+    3.811,
+    4.43
+   ],
+   "file": "frame_09.png"
+  },
+  {
+   "index": 10,
+   "utc": "2025-09-17T02:37:51.254",
+   "obs_id": "2025W38_1A_0538_3",
+   "collection": "spherex_dr1",
+   "detector": "D6",
+   "band_um": [
+    4.412,
+    5.01
+   ],
+   "file": "frame_10.png"
+  },
+  {
+   "index": 11,
+   "utc": "2026-02-20T17:16:14.822",
+   "obs_id": "2026W08_2A_0233_1",
+   "collection": "spherex_dr1",
+   "detector": "D3",
+   "band_um": [
+    1.63,
+    2.435
+   ],
+   "file": "frame_11.png"
+  },
+  {
+   "index": 12,
+   "utc": "2026-09-02T02:19:55.402",
+   "obs_id": "2026W36_1A_0476_1",
+   "collection": "spherex_qr3",
+   "detector": "D1",
+   "band_um": [
+    0.746,
+    1.117
+   ],
+   "file": "frame_12.png"
+  }
+ ],
+ "source": "NASA/IPAC Infrared Science Archive (IRSA) - SPHEREx level-2 images via IBE cutouts; frames reprojected onto a common grid, median-background subtracted, asinh-stretched with one global scale per series.",
+ "credit": "SPHEREx / NASA / IRSA",
+ "target": "RW Aurigae",
+ "slug": "rw-aurigae",
+ "note": "T Tauri variable star; verified 168 epochs, 2025-09-01 to 2026-09-16."
+}

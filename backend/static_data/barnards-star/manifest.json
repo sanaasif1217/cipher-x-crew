@@ -1,0 +1,159 @@
+{
+ "ra_deg": 269.45208,
+ "dec_deg": 4.69339,
+ "field_size_deg": 0.5,
+ "display_px": 900,
+ "n_epochs_total": 183,
+ "n_frames": 12,
+ "frames": [
+  {
+   "index": 1,
+   "utc": "2025-08-15T20:45:11.376",
+   "obs_id": "2025W33_2C_0321_1",
+   "collection": "spherex_dr1",
+   "detector": "D6",
+   "band_um": [
+    4.412,
+    5.01
+   ],
+   "file": "frame_01.png"
+  },
+  {
+   "index": 2,
+   "utc": "2025-08-15T20:47:20.285",
+   "obs_id": "2025W33_2C_0321_2",
+   "collection": "spherex_dr1",
+   "detector": "D6",
+   "band_um": [
+    4.412,
+    5.01
+   ],
+   "file": "frame_02.png"
+  },
+  {
+   "index": 3,
+   "utc": "2025-08-18T20:28:41.405",
+   "obs_id": "2025W34_1B_0164_1",
+   "collection": "spherex_dr1",
+   "detector": "D6",
+   "band_um": [
+    4.412,
+    5.01
+   ],
+   "file": "frame_03.png"
+  },
+  {
+   "index": 4,
+   "utc": "2025-08-21T15:24:43.834",
+   "obs_id": "2025W34_2B_0030_3",
+   "collection": "spherex_dr1",
+   "detector": "D6",
+   "band_um": [
+    4.412,
+    5.01
+   ],
+   "file": "frame_04.png"
+  },
+  {
+   "index": 5,
+   "utc": "2025-08-24T11:50:46.090",
+   "obs_id": "2025W34_2B_0557_3",
+   "collection": "spherex_dr1",
+   "detector": "D2",
+   "band_um": [
+    1.103,
+    1.65
+   ],
+   "file": "frame_05.png"
+  },
+  {
+   "index": 6,
+   "utc": "2025-08-25T00:56:01.046",
+   "obs_id": "2025W35_1A_0008_4",
+   "collection": "spherex_dr1",
+   "detector": "D6",
+   "band_um": [
+    4.412,
+    5.01
+   ],
+   "file": "frame_06.png"
+  },
+  {
+   "index": 7,
+   "utc": "2025-08-27T05:06:02.592",
+   "obs_id": "2025W35_1A_0432_4",
+   "collection": "spherex_dr1",
+   "detector": "D1",
+   "band_um": [
+    0.746,
+    1.117
+   ],
+   "file": "frame_07.png"
+  },
+  {
+   "index": 8,
+   "utc": "2025-08-27T11:34:56.035",
+   "obs_id": "2025W35_1A_0484_1",
+   "collection": "spherex_dr1",
+   "detector": "D6",
+   "band_um": [
+    4.412,
+    5.01
+   ],
+   "file": "frame_08.png"
+  },
+  {
+   "index": 9,
+   "utc": "2025-09-30T14:02:53.290",
+   "obs_id": "2025W40_1A_0353_1",
+   "collection": "spherex_dr1",
+   "detector": "D1",
+   "band_um": [
+    0.746,
+    1.117
+   ],
+   "file": "frame_09.png"
+  },
+  {
+   "index": 10,
+   "utc": "2026-03-11T02:11:37.219",
+   "obs_id": "2026W11_1A_0430_2",
+   "collection": "spherex_dr1",
+   "detector": "D4",
+   "band_um": [
+    2.403,
+    3.847
+   ],
+   "file": "frame_10.png"
+  },
+  {
+   "index": 11,
+   "utc": "2026-05-04T03:11:42.778",
+   "obs_id": "2026W19_1A_0046_1",
+   "collection": "spherex_dr1",
+   "detector": "D6",
+   "band_um": [
+    4.412,
+    5.01
+   ],
+   "file": "frame_11.png"
+  },
+  {
+   "index": 12,
+   "utc": "2026-08-16T15:08:22.157",
+   "obs_id": "2026W33_2A_0594_4",
+   "collection": "spherex_qr3",
+   "detector": "D6",
+   "band_um": [
+    4.412,
+    5.01
+   ],
+   "file": "frame_12.png"
+  }
+ ],
+ "source": "NASA/IPAC Infrared Science Archive (IRSA) - SPHEREx level-2 images via IBE cutouts; frames reprojected onto a common grid, median-background subtracted, asinh-stretched with one global scale per series.",
+ "credit": "SPHEREx / NASA / IRSA",
+ "target": "Barnard's Star",
+ "slug": "barnards-star",
+ "note": "High proper-motion star; verified 183 SPHEREx level-2 epochs, 2025-08-15 to 2026-09-22."
+}

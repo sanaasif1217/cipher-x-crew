@@ -1,0 +1,159 @@
+{
+ "ra_deg": 248.1676,
+ "dec_deg": 66.75492,
+ "field_size_deg": 0.5,
+ "display_px": 900,
+ "n_epochs_total": 1258,
+ "n_frames": 12,
+ "frames": [
+  {
+   "index": 1,
+   "utc": "2025-04-24T21:06:38.390",
+   "obs_id": "2025W17_4B_0021_1",
+   "collection": "spherex_dr1_deep",
+   "detector": "D3",
+   "band_um": [
+    1.63,
+    2.435
+   ],
+   "file": "frame_01.png"
+  },
+  {
+   "index": 2,
+   "utc": "2025-04-24T21:08:47.299",
+   "obs_id": "2025W17_4B_0021_2",
+   "collection": "spherex_dr1_deep",
+   "detector": "D3",
+   "band_um": [
+    1.63,
+    2.435
+   ],
+   "file": "frame_02.png"
+  },
+  {
+   "index": 3,
+   "utc": "2025-04-27T11:08:35.520",
+   "obs_id": "2025W17_4B_0409_4",
+   "collection": "spherex_dr1_deep",
+   "detector": "D3",
+   "band_um": [
+    1.63,
+    2.435
+   ],
+   "file": "frame_03.png"
+  },
+  {
+   "index": 4,
+   "utc": "2025-04-29T07:11:38.746",
+   "obs_id": "2025W18_1B_0116_4",
+   "collection": "spherex_dr1_deep",
+   "detector": "D3",
+   "band_um": [
+    1.63,
+    2.435
+   ],
+   "file": "frame_04.png"
+  },
+  {
+   "index": 5,
+   "utc": "2025-05-02T19:50:58.675",
+   "obs_id": "2025W18_2B_0202_1",
+   "collection": "spherex_dr1_deep",
+   "detector": "D3",
+   "band_um": [
+    1.63,
+    2.435
+   ],
+   "file": "frame_05.png"
+  },
+  {
+   "index": 6,
+   "utc": "2025-05-16T22:56:23.626",
+   "obs_id": "2025W20_2D_0243_1",
+   "collection": "spherex_dr1",
+   "detector": "D3",
+   "band_um": [
+    1.63,
+    2.435
+   ],
+   "file": "frame_06.png"
+  },
+  {
+   "index": 7,
+   "utc": "2025-06-06T03:17:02.458",
+   "obs_id": "2025W23_2B_0129_2",
+   "collection": "spherex_dr1",
+   "detector": "D3",
+   "band_um": [
+    1.63,
+    2.435
+   ],
+   "file": "frame_07.png"
+  },
+  {
+   "index": 8,
+   "utc": "2025-06-09T12:52:43.363",
+   "obs_id": "2025W24_1A_0123_2",
+   "collection": "spherex_dr1",
+   "detector": "D2",
+   "band_um": [
+    1.103,
+    1.65
+   ],
+   "file": "frame_08.png"
+  },
+  {
+   "index": 9,
+   "utc": "2025-06-12T06:10:34.781",
+   "obs_id": "2025W24_1A_0631_4",
+   "collection": "spherex_dr1",
+   "detector": "D3",
+   "band_um": [
+    1.63,
+    2.435
+   ],
+   "file": "frame_09.png"
+  },
+  {
+   "index": 10,
+   "utc": "2025-06-22T15:36:03.370",
+   "obs_id": "2025W25_2A_0633_3",
+   "collection": "spherex_dr1",
+   "detector": "D2",
+   "band_um": [
+    1.103,
+    1.65
+   ],
+   "file": "frame_10.png"
+  },
+  {
+   "index": 11,
+   "utc": "2025-08-29T08:53:31.891",
+   "obs_id": "2025W35_2A_0170_1",
+   "collection": "spherex_dr1_deep",
+   "detector": "D1",
+   "band_um": [
+    0.746,
+    1.117
+   ],
+   "file": "frame_11.png"
+  },
+  {
+   "index": 12,
+   "utc": "2026-02-08T11:33:54.691",
+   "obs_id": "2026W06_2A_0609_1",
+   "collection": "spherex_dr1_deep",
+   "detector": "D3",
+   "band_um": [
+    1.63,
+    2.435
+   ],
+   "file": "frame_12.png"
+  }
+ ],
+ "source": "NASA/IPAC Infrared Science Archive (IRSA) - SPHEREx level-2 images via IBE cutouts; frames reprojected onto a common grid, median-background subtracted, asinh-stretched with one global scale per series.",
+ "credit": "SPHEREx / NASA / IRSA",
+ "target": "R Draconis",
+ "slug": "r-draconis",
+ "note": "Mira variable near the north ecliptic pole (deep SPHEREx coverage); verified 1,258 epochs, 2025-04-24 to 2026-09-27."
+}
