@@ -482,6 +482,7 @@ export function RealDataExplorer({ requestedSlug }: RealDataExplorerProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [speed, setSpeed] = useState(0.9); // seconds per frame
   const [viewMode, setViewMode] = useState<'frame' | 'diff'>('frame');
+  const [fov, setFov] = useState(0.5); // field of view in degrees (pack frames cover 0.5)
   const timerRef = useRef<number | null>(null);
   const diffCanvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -599,7 +600,8 @@ export function RealDataExplorer({ requestedSlug }: RealDataExplorerProps) {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
           {/* Frame viewer */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-1.5 bg-[#0a0d16] p-1.5 rounded-xl border border-[#f5efe2]/15 mb-3 self-start w-fit">
+            <div className="flex flex-wrap items-center gap-3 mb-3">
+            <div className="flex items-center gap-1.5 bg-[#0a0d16] p-1.5 rounded-xl border border-[#f5efe2]/15 self-start w-fit">
               <button
                 type="button"
                 onClick={() => setViewMode('frame')}
@@ -624,6 +626,27 @@ export function RealDataExplorer({ requestedSlug }: RealDataExplorerProps) {
                 Δ Difference
               </button>
             </div>
+            <div className="flex items-center gap-1.5 bg-[#0a0d16] p-1.5 rounded-xl border border-[#f5efe2]/15 w-fit">
+              <span className="text-[10px] font-mono uppercase tracking-wider text-[#f5efe2]/50 px-1">
+                Field of view
+              </span>
+              {[0.5, 0.3, 0.18].map((f) => (
+                <button
+                  key={f}
+                  type="button"
+                  onClick={() => setFov(f)}
+                  className={`px-2.5 py-1.5 rounded-lg text-xs font-mono transition-all ${
+                    fov === f
+                      ? 'bg-emerald-500 text-white shadow-md'
+                      : 'text-[#f5efe2]/60 hover:text-[#f5efe2]'
+                  }`}
+                  title={`Show the central ${f.toFixed(2)} degrees of the pack field`}
+                >
+                  {f.toFixed(2)}°
+                </button>
+              ))}
+            </div>
+            </div>
 
             <div className="relative aspect-square max-h-[560px] w-full bg-[#030408] rounded-2xl overflow-hidden border border-[#f5efe2]/20 shadow-inner flex items-center justify-center">
               {status === 'ready' && frame && viewMode === 'frame' && pack && (
@@ -631,6 +654,7 @@ export function RealDataExplorer({ requestedSlug }: RealDataExplorerProps) {
                   src={`${pack.base}/${frame.file}`}
                   alt={`SPHEREx frame ${frame.index} of ${target.name}, observed ${frame.utc} UTC`}
                   className="w-full h-full object-contain"
+                  style={{ transform: `scale(${0.5 / fov})` }}
                 />
               )}
               {status === 'ready' && viewMode === 'diff' && (
@@ -639,6 +663,7 @@ export function RealDataExplorer({ requestedSlug }: RealDataExplorerProps) {
                   width={GRAY_SIZE}
                   height={GRAY_SIZE}
                   className="w-full h-full object-contain"
+                  style={{ transform: `scale(${0.5 / fov})` }}
                   aria-label={`Difference between frame ${frameIdx + 1} and frame 1 of ${target.name}`}
                 />
               )}
@@ -660,6 +685,12 @@ export function RealDataExplorer({ requestedSlug }: RealDataExplorerProps) {
                 </div>
               )}
             </div>
+            {fov < 0.5 && status === 'ready' && (
+              <p className="text-[11px] text-[#f5efe2]/55 mt-2 leading-relaxed">
+                Field of view {fov.toFixed(2)}°: the central part of the 0.50° pack field, enlarged.
+                The full field is one click away on the 0.50° setting.
+              </p>
+            )}
             {viewMode === 'diff' && status === 'ready' && (
               <p className="text-[11px] text-[#f5efe2]/55 mt-2 leading-relaxed">
                 Difference view: each frame is subtracted from frame 1 and amplified ×3. Stars that
