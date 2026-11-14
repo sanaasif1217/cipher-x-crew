@@ -3,12 +3,16 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import barnardImg from '../assets/images/star_barnards_star_1794632947286.jpg';
-import epsilonImg from '../assets/images/star_epsilon_indi_b_1794632948278.jpg';
-import wiseImg from '../assets/images/star_wise_0855_1794632948773.jpg';
-import rwImg from '../assets/images/star_rw_aurigae_1794632948893.jpg';
-import rDracImg from '../assets/images/star_r_draconis_1794632949659.jpg';
-import surpriseImg from '../assets/images/star_surprise_vista_1794632950410.jpg';
+// Star artwork is served from the team's source repo (public), so this
+// repository stays self-contained in code while the images load remotely.
+const IMG_BASE =
+  'https://raw.githubusercontent.com/khanolkarsujal/Watch-the-sky-change/main/src/assets/images';
+const barnardImg = `${IMG_BASE}/star_barnards_star_1794632947286.jpg`;
+const epsilonImg = `${IMG_BASE}/star_epsilon_indi_b_1794632948278.jpg`;
+const wiseImg = `${IMG_BASE}/star_wise_0855_1794632948773.jpg`;
+const rwImg = `${IMG_BASE}/star_rw_aurigae_1794632948893.jpg`;
+const rDracImg = `${IMG_BASE}/star_r_draconis_1794632949659.jpg`;
+const surpriseImg = `${IMG_BASE}/star_surprise_vista_1794632950410.jpg`;
 import {
   computeStarObservationReadout,
   cycleStarIndex,
