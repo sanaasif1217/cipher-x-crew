@@ -214,10 +214,10 @@ Six members, two countries — Pakistan and India.
 | --- | --- |
 | **Sana Asif** | **Team Leader** — project direction, real-data backend and data packs, repository |
 | Sujal Khanolkar | Website design and frontend experience |
-| Sherdil Khan | Team Member |
-| Naheed Nawaz | Team Member |
-| Abdul Qadoos | Team Member |
-| Abdullah | Team Member |
+| Sherdil Khan | Team Member — research and documentation |
+| Naheed Nawaz | Team Member — demo video and presentation |
+| Abdul Qadoos | Team Member — testing and feedback |
+| Abdullah | Team Member — data verification |
 
 **AI assistance:** parts of this project's code and documentation were
 developed with AI assistance (Claude, Anthropic) and were reviewed,
