@@ -58,7 +58,7 @@ export function ResearchAssistant() {
   };
 
   return (
-    <div className="mt-8 bg-[#0a0d16] rounded-2xl border border-[#f5efe2]/10 p-5">
+    <div id="research-assistant" className="mt-8 bg-[#0a0d16] rounded-2xl border border-[#f5efe2]/10 p-5">
       <h3 className="text-sm font-mono uppercase tracking-wider text-emerald-300">
         Research Assistant
       </h3>

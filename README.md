@@ -47,6 +47,7 @@ exploring.
 | Ask questions of the project documents | Research Assistant — TF-IDF retrieval over the README, methodology and manifests; every answer cites its source, and it declines honestly when the documents don't cover a question | Done |
 | A measured scientific result | Comet 3I/ATLAS motion fitted from the pack's own frames: **1.154°/day at PA 289.1°** (9 frames, 8.2 h), vs the JPL-validated 1.167°/day — agreement within ~1% (see "Measured result") | Done |
 | Choice of field of view | Field selector in the viewer — full 0.50°, or the central 0.30° / 0.18° of the registered pack frames | Done |
+| Help for first-time visitors | Site guide — a one-minute guided tour offered automatically on a first visit (and always available from the "Site guide" button), walking through the stars, the real frames, the difference view and the assistant | Done |
 
 ## What's real here
 

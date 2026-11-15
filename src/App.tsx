@@ -21,6 +21,7 @@ import {
 } from './components/SectionOneWorkbench';
 import { SectorTwoExplorer } from './components/SectorTwoExplorer';
 import { RealDataExplorer } from './components/RealDataExplorer';
+import { SiteTour } from './components/SiteTour';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -473,6 +474,8 @@ export default function App() {
       <div className={`loader${loaded ? ' gone' : ''}`} id="loader" aria-hidden="true">
         <span />
       </div>
+
+      <SiteTour />
     </>
   );
 }
