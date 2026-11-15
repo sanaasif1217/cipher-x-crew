@@ -252,14 +252,21 @@ export default function App() {
           <a
             className="logo"
             href="#top"
-            aria-label="NASA"
+            aria-label="Cipher-X Crew — back to top"
             onClick={navigateToSection('top')}
+            style={{
+              fontFamily: 'Antonio, sans-serif',
+              fontSize: '20px',
+              letterSpacing: '0.14em',
+              color: '#f5efe2',
+              textDecoration: 'none',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              height: '58px',
+            }}
           >
-            <img
-              src="https://raw.githubusercontent.com/sanaasif1217/cipher-x-crew/main/public/assets/aistudio/nasa_worm_logo_transparent-removebg-preview_c546c34a.png"
-              alt="NASA"
-              style={{ height: '58px', width: 'auto', display: 'block', objectFit: 'contain' }}
-            />
+            <span style={{ color: '#34d399' }}>✦</span> CIPHER-X CREW
           </a>
           <nav className="sky-nav" aria-label="Main">
             <a
